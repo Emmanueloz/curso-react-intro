@@ -5,9 +5,10 @@ TodoItem.propTypes = {
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired,
   onComplete: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
 };
 
-function TodoItem({ text, completed, onComplete }) {
+function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
     <li className="TodoItem">
       <button
@@ -19,7 +20,9 @@ function TodoItem({ text, completed, onComplete }) {
       <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>
         {text}
       </p>
-      <button className="Icon Icon-delete">X</button>
+      <button onClick={onDelete} className="Icon Icon-delete">
+        X
+      </button>
     </li>
   );
 }
