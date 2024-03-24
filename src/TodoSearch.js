@@ -7,7 +7,6 @@ TodoSearch.propTypes = {
 };
 
 function TodoSearch({ searchValue, setSearchValue }) {
-  console.log("Los usuarios buscan todos de " + searchValue);
   return (
     <input
       placeholder="Search"
