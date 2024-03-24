@@ -26,13 +26,25 @@ function App() {
     return todoText.includes(searchText);
   });
 
+  const completeTodo = (text) => {
+    const newTodos = [...todos];
+    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
+    newTodos[todoIndex].completed = true;
+    setTodos(newTodos);
+  };
+
   return (
     <>
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
         {searchedTodos.map((todo, key) => (
-          <TodoItem text={todo.text} key={key} completed={todo.completed} />
+          <TodoItem
+            text={todo.text}
+            key={key}
+            completed={todo.completed}
+            onComplete={() => completeTodo(todo.text)}
+          />
         ))}
       </TodoList>
       <CreateTodoButton />
