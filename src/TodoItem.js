@@ -1,4 +1,10 @@
 import "./TodoItem.css";
+import PropTypes from "prop-types";
+
+TodoItem.propTypes = {
+  text: PropTypes.string.isRequired,
+  completed: PropTypes.bool.isRequired,
+};
 
 function TodoItem({ text, completed }) {
   return (

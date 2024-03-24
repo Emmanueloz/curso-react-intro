@@ -1,9 +1,12 @@
-import { useState } from "react";
 import "./TodoSearch.css";
+import PropTypes from "prop-types";
 
-function TodoSearch() {
-  const [searchValue, setSearchValue] = useState("");
+TodoSearch.propTypes = {
+  searchValue: PropTypes.string.isRequired,
+  setSearchValue: PropTypes.func.isRequired,
+};
 
+function TodoSearch({ searchValue, setSearchValue }) {
   console.log("Los usuarios buscan todos de " + searchValue);
   return (
     <input
