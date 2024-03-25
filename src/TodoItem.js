@@ -13,23 +13,11 @@ TodoItem.propTypes = {
 function TodoItem({ text, completed, onComplete, onDelete }) {
   return (
     <li className="TodoItem">
-      {/*<button
-        onClick={onComplete}
-        className={`Icon Icon-check ${completed && "Icon-check--active"}`}
-      >
-        V
-      </button>*/}
-      <CompleteIcon />
+      <CompleteIcon completed={completed} onComplete={onComplete} />
       <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>
         {text}
       </p>
-      <DeleteIcon />
-      {/*
-      
-      <button onClick={onDelete} className="Icon Icon-delete">
-        X
-      </button>
-      */}
+      <DeleteIcon onDelete={onDelete} />
     </li>
   );
 }
