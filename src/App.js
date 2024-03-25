@@ -3,53 +3,18 @@ import { TodoSearch } from "./components/TodoSearch";
 import { TodoList } from "./components/TodoList";
 import { TodoItem } from "./components/TodoItem";
 import { CreateTodoButton } from "./components/CreateTodoButton";
-import { useState } from "react";
-
-const useLocalStorage = (itemName, initialValue) => {
-  const [items, setItems] = useState(
-    () => JSON.parse(localStorage.getItem(itemName)) || initialValue
-  );
-  const saveItem = (newItem) => {
-    setItems(newItem);
-    localStorage.setItem(itemName, JSON.stringify(newItem));
-  };
-
-  return [items, saveItem];
-};
+import { useTodoViewModel } from "./controller/todoViewModel";
 
 function App() {
-  const [todos, setTodos] = useLocalStorage("TODOS_V1", []);
-  const [searchValue, setSearchValue] = useState("");
-
-  const completedTodos = todos.filter((todo) => !!todo.completed).length;
-  const totalTodos = todos.length;
-
-  const searchedTodos = todos.filter((todo) => {
-    const todoText = todo.text.toLowerCase();
-    const searchText = searchValue.toLowerCase();
-    return todoText.includes(searchText);
-  });
-
-  const saveTodos = (newTodos) => {
-    setTodos(newTodos);
-    localStorage.setItem("TODOS_V1", JSON.stringify(newTodos));
-  };
-
-  const completeTodo = (text) => {
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
-    newTodos[todoIndex].completed = true;
-    saveTodos(newTodos);
-  };
-
-  const deleteTodo = (text) => {
-    const newTodos = [...todos];
-    const todoIndex = newTodos.findIndex((todo) => todo.text === text);
-
-    newTodos.splice(todoIndex, 1);
-
-    saveTodos(newTodos);
-  };
+  const {
+    completedTodos,
+    totalTodos,
+    searchedTodos,
+    completeTodo,
+    deleteTodo,
+    searchValue,
+    setSearchValue,
+  } = useTodoViewModel();
 
   return (
     <>
