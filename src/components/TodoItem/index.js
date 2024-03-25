@@ -1,7 +1,7 @@
 import "./TodoItem.css";
 import PropTypes from "prop-types";
-import { CompleteIcon } from "./CompleteIcon";
-import { DeleteIcon } from "./DeleteIcon";
+import { CompleteIcon } from "../TodoIcon/CompleteIcon";
+import { DeleteIcon } from "../TodoIcon/DeleteIcon";
 
 TodoItem.propTypes = {
   text: PropTypes.string.isRequired,

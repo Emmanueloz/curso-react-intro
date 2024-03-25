@@ -1,4 +1,4 @@
-import { TodoIcon } from "./TodoIcon";
+import { TodoIcon } from ".";
 import PropTypes from "prop-types";
 
 DeleteIcon.propTypes = {
