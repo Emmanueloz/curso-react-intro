@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 CompleteIcon.propTypes = {
   completed: PropTypes.bool.isRequired,
-  onComplete: PropTypes.bool.isRequired,
+  onComplete: PropTypes.func.isRequired,
 };
 
 function CompleteIcon({ completed, onComplete }) {
