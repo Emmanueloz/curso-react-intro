@@ -2,7 +2,13 @@ import { useState } from "react";
 import { useLocalStorage } from "../hooks/useLocalStorage";
 
 const useTodoViewModel = () => {
-  const [todos, setTodos] = useLocalStorage("TODOS_V1", []);
+  const {
+    items: todos,
+    saveItem: saveTodos,
+    loading,
+    error,
+  } = useLocalStorage("TODOS_V1", []);
+
   const [searchValue, setSearchValue] = useState("");
 
   const completedTodos = todos.filter((todo) => !!todo.completed).length;
@@ -13,11 +19,6 @@ const useTodoViewModel = () => {
     const searchText = searchValue.toLowerCase();
     return todoText.includes(searchText);
   });
-
-  const saveTodos = (newTodos) => {
-    setTodos(newTodos);
-    localStorage.setItem("TODOS_V1", JSON.stringify(newTodos));
-  };
 
   const completeTodo = (text) => {
     const newTodos = [...todos];
@@ -43,6 +44,8 @@ const useTodoViewModel = () => {
     deleteTodo,
     searchValue,
     setSearchValue,
+    loading,
+    error,
   };
 };
 

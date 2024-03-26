@@ -14,6 +14,8 @@ function App() {
     deleteTodo,
     searchValue,
     setSearchValue,
+    loading,
+    error,
   } = useTodoViewModel();
 
   return (
@@ -21,6 +23,9 @@ function App() {
       <TodoCounter completed={completedTodos} total={totalTodos} />
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
       <TodoList>
+        {loading && <p>Estamos cargando...</p>}
+        {error && <p>Hubo un error!!!</p>}
+        {!loading && searchedTodos.length === 0 && <p>Crea tu primer TODO!</p>}
         {searchedTodos.map((todo, key) => (
           <TodoItem
             text={todo.text}
