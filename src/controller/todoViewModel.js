@@ -44,6 +44,7 @@ const useTodoViewModel = () => {
     deleteTodo,
     searchValue,
     setSearchValue,
+    addTodo,
     loading,
     error,
   };
