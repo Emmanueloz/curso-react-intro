@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { createContext, useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
-const useTodoViewModel = () => {
+const TodoContext = createContext();
+
+function TodoProvider({ children }) {
   const {
     items: todos,
     saveItem: saveTodos,
@@ -36,18 +38,23 @@ const useTodoViewModel = () => {
     saveTodos(newTodos);
   };
 
-  return {
-    completedTodos,
-    totalTodos,
-    searchedTodos,
-    completeTodo,
-    deleteTodo,
-    searchValue,
-    setSearchValue,
-    addTodo,
-    loading,
-    error,
-  };
-};
+  return (
+    <TodoContext.Provider
+      value={{
+        loading,
+        error,
+        completedTodos,
+        totalTodos,
+        searchValue,
+        setSearchValue,
+        searchedTodos,
+        completeTodo,
+        deleteTodo,
+      }}
+    >
+      {children}
+    </TodoContext.Provider>
+  );
+}
 
-export { useTodoViewModel };
+export { TodoContext, TodoProvider };
