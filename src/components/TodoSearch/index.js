@@ -1,12 +1,11 @@
+import { useContext } from "react";
+import { TodoContext } from "../../context/TodoContext";
 import "./TodoSearch.css";
 import PropTypes from "prop-types";
 
-TodoSearch.propTypes = {
-  searchValue: PropTypes.string.isRequired,
-  setSearchValue: PropTypes.func.isRequired,
-};
+function TodoSearch() {
+  const { searchValue, setSearchValue } = useContext(TodoContext);
 
-function TodoSearch({ searchValue, setSearchValue }) {
   return (
     <input
       placeholder="Search"

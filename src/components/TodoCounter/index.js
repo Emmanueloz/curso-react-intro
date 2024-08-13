@@ -1,21 +1,20 @@
+import { useContext } from "react";
 import "./TodoCounter.css";
-import PropTypes from "prop-types";
+import { TodoContext } from "../../context/TodoContext";
 
-TodoCounter.propTypes = {
-  total: PropTypes.number.isRequired,
-  completed: PropTypes.number.isRequired,
-};
+function TodoCounter() {
+  const { completedTodos, totalTodos } = useContext(TodoContext);
 
-function TodoCounter({ total, completed }) {
   let message;
-  if (total === 0) {
+  if (totalTodos === 0) {
     message = <h1 className="TodoCounter">Crea una tarea</h1>;
-  } else if (total === completed) {
+  } else if (totalTodos === completedTodos) {
     message = <h1 className="TodoCounter">Has completado todos las tareas</h1>;
   } else {
     message = (
       <h1 className="TodoCounter">
-        Has completado <span>{completed}</span> de <span>{total}</span> TODOS
+        Has completado <span>{completedTodos}</span> de{" "}
+        <span>{totalTodos}</span> TODOS
       </h1>
     );
   }
