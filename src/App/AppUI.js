@@ -7,6 +7,7 @@ import { TodosError } from "../components/TodosError";
 import { EmptyTodos } from "../components/EmptyTodos";
 import { CreateTodoButton } from "../components/CreateTodoButton";
 import { Modal } from "../components/Modal";
+import { TodoForm } from "../components/TodoForm";
 
 import { TodoContext } from "../context/TodoContext";
 import { useContext } from "react";
@@ -42,7 +43,9 @@ function AppUI() {
         ))}
       </TodoList>
       <CreateTodoButton />
-      <Modal>La funcionalidad de agregar Todos</Modal>
+      <Modal>
+        <TodoForm />
+      </Modal>
     </>
   );
 }
