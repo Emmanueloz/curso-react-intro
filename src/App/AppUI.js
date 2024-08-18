@@ -6,6 +6,7 @@ import { TodosLoading } from "../components/TodosLoading";
 import { TodosError } from "../components/TodosError";
 import { EmptyTodos } from "../components/EmptyTodos";
 import { CreateTodoButton } from "../components/CreateTodoButton";
+import { Modal } from "../components/Modal";
 
 import { TodoContext } from "../context/TodoContext";
 import { useContext } from "react";
@@ -13,6 +14,7 @@ import { useContext } from "react";
 function AppUI() {
   const { loading, error, searchedTodos, completeTodo, deleteTodo } =
     useContext(TodoContext);
+
   return (
     <>
       <TodoCounter />
@@ -40,6 +42,7 @@ function AppUI() {
         ))}
       </TodoList>
       <CreateTodoButton />
+      <Modal>La funcionalidad de agregar Todos</Modal>
     </>
   );
 }
